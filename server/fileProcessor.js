@@ -49,8 +49,21 @@ const readFile = path => {
   });
 };
 
+const readFileStream = path => {
+    const parseFile = R.compose(
+      lines(),
+      R.map(buildLineArray),
+      R.map(mapToRaceTime)
+    );
+
+    const fileStream = fs.createReadStream(path, {
+      encoding: "utf8"
+    });
+    return fileStream.pipe(stream(parseFile, { objectMode: true }));
+};
+
 module.exports = {
   buildLineArray,
   mapToRaceTime,
-  readFile
+  readFileStream
 };
