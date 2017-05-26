@@ -1,4 +1,4 @@
-const { buildLineArray, mapToRaceTime } = require("./dataProcessor");
+const { buildLineArray, mapToRaceTime } = require("./fileProcessor");
 
 describe("data processing tests", () => {
   describe("buildLineArray", () => {

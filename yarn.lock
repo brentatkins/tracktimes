@@ -2350,6 +2350,14 @@ tr46@~0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
 
+transduce-stream@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/transduce-stream/-/transduce-stream-0.5.0.tgz#7008b3bc639a7c06879354f09d80fb8a4c584490"
+
+transduce@^0.10.2:
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/transduce/-/transduce-0.10.2.tgz#1141cd9c4fb16ea5bc4f04e491f3590ad3efe289"
+
 trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
