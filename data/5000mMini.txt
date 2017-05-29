@@ -18,3 +18,13 @@
         18     12:48.81   Stephen Cherono                KEN     15.10.82    1      Ostrava                     12.06.2003
         19     12:48.98   Daniel Komen                   KEN     17.05.76    1      Roma                        05.06.1997
         20     12:49.04   Thomas Longosiwa               KEN     14.01.82    5      Saint-Denis                 06.07.2012
+        21     12:49.28   Brahim Lahlafi                 MAR     15.04.68    1      Bruxelles                   25.08.2000
+        22     12:49.50   John Kipkoech                  KEN     29.12.91    6      Saint-Denis                 06.07.2012
+        23     12:49.53   Kenenisa Bekele                ETH     13.06.82    1      Zaragoza                    28.07.2007
+        24     12:49.64   Haile Gebrselassie             ETH     18.04.73    1      Zürich                      11.08.1999
+        25     12:49.71   Mohammed Mourhit               BEL     10.10.70    2      Bruxelles                   25.08.2000
+        26     12:49.87   Paul Tergat                    KEN     17.06.69    3      Zürich                      13.08.1997
+        27     12:50.16   Sileshi Sihine                 ETH     29.01.83    1      Bruxelles                   14.09.2007
+        28     12:50.18   Kenenisa Bekele                ETH     13.06.82    1      Zürich                      29.08.2008
+        29     12:50.22   Eliud Kipchoge                 KEN     05.11.84    1      Bruxelles                   26.08.2005
+        30     12:50.24   Hicham El Guerrouj             MAR     14.09.74    2      Ostrava                     12.06.2003

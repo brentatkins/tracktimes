@@ -1,4 +1,9 @@
-const { buildLineArray, mapToRaceTime } = require("./fileProcessor");
+const {
+  buildLineArray,
+  mapToRaceTime,
+  trackTimeDateToJSDate,
+  trackTimeToMilleseconds
+} = require("./fileProcessor");
 
 describe("data processing tests", () => {
   describe("buildLineArray", () => {
@@ -65,6 +70,52 @@ describe("data processing tests", () => {
           city: "Hengelo",
           date: "31.05.2004"
         });
+      });
+    });
+  });
+
+  describe("trackTimeDateToJSDate", () => {
+    describe("when passed a track time dob", () => {
+      it("should convert to a javascript date", () => {
+        const trackTimeDob = "20.04.2012";
+        const actual = trackTimeDateToJSDate(trackTimeDob);
+        expect(actual).toBeInstanceOf(Date);
+      });
+      it("should parse dates correctly", () => {
+        const trackTimeDob = "20.04.2012";
+        const actual = trackTimeDateToJSDate(trackTimeDob);
+        expect(actual.getFullYear()).toBe(2012);
+        expect(actual.getMonth()).toBe(3);
+        expect(actual.getDate()).toBe(20);
+      });
+    });
+  });
+
+  describe("trackTimeToMilleseconds", () => {
+    describe("when passed a string time a single colon", () => {
+      it("should take number on left as minutes", () => {
+        const trackTime = "1:00";
+        const actual = trackTimeToMilleseconds(trackTime);
+        expect(actual).toEqual(60000);
+      });
+      it("should take number on right as seconds", () => {
+        const trackTime = "0:59";
+        const actual = trackTimeToMilleseconds(trackTime);
+        expect(actual).toEqual(59000);
+      });
+    });
+    describe("when last number contains a decimal", () => {
+      it("should intepret decimal as hundredth of a second", () => {
+        const trackTime = "0:0.76";
+        const actual = trackTimeToMilleseconds(trackTime);
+        expect(actual).toEqual(760);
+      });
+    });
+    describe("when 2 colons are provided", () => {
+      it("should break into hours, minutes, seconds", () => {
+        const trackTime = "1:00:00";
+        const actual = trackTimeToMilleseconds(trackTime);
+        expect(actual).toEqual(3600000);
       });
     });
   });
