@@ -5,7 +5,7 @@ import {
   VictoryAxis,
   VictoryScatter
 } from "victory";
-import R from "ramda";
+import * as R from "ramda";
 
 const formatTimeFromMs = timeInMs => {
   let hours = parseInt(timeInMs / (60 * 60 * 1000), 10);
