@@ -1,24 +1,20 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+
 import TrackTimeChart from "./TrackTimeChart";
 import { fetchTimes } from "./dataFetcher";
 
-class App extends Component {
-  state = { times: [] };
-  componentDidMount() {
-    console.warn("fetch data");
-    fetchTimes()
-      .then(times => {
-        this.setState((prevState, props) => ({ times }));
-      })
-      .catch(error => {
-        console.error("error", error);
-      });
-  }
-  render() {
-    return this.state.times.length > 0
-      ? <TrackTimeChart times={this.state.times} />
-      : <div>loading</div>;
-  }
+function App(props) {
+  const [times, setTimes] = useState(null);
+
+  useEffect(() => {
+    if (times === null) {
+      fetchTimes()
+        .then(times => setTimes(times))
+        .catch(error => console.error("error loading data", error));
+    }
+  });
+
+  return times ? <TrackTimeChart times={times} /> : <div>loading</div>;
 }
 
 export default App;
