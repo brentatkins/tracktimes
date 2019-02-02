@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "concurrently": "^3.4.0",
-    "jest": "^20.0.4",
     "nodemon": "^1.11.0"
   },
   "scripts": {

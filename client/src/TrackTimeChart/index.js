@@ -1,4 +1,5 @@
 import React from "react";
+import randomColor from "randomcolor";
 import {
   VictoryChart,
   VictoryLine,
@@ -33,10 +34,20 @@ const calculateDomain = times => {
   return domain;
 };
 
-const getCountryColor = country => {
-  if (country === "ETH") return "green";
-  else if (country === "KEN") return "red";
-  else return "black";
+let athleteColors = {};
+const getAthleteColor = (athleteName, country) => {
+  if (athleteColors[athleteName]) {
+    return athleteColors[athleteName];
+  } else {
+    const color =
+      country === "ETH"
+        ? randomColor("green")
+        : country === "KEN"
+        ? randomColor("red")
+        : randomColor();
+    athleteColors[athleteName] = color;
+    return color;
+  }
 };
 
 export default ({ times }) => {
@@ -52,7 +63,7 @@ export default ({ times }) => {
         tickFormat={formatTimeFromMs}
       />
       {times.map(athlete => {
-        const countryColour = getCountryColor(athlete.country);
+        const countryColour = getAthleteColor(athlete.name, athlete.country);
         return [
           <VictoryLine
             key={athlete.name}
