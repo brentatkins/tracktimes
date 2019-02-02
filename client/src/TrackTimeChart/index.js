@@ -3,16 +3,22 @@ import {
   VictoryChart,
   VictoryLine,
   VictoryAxis,
-  VictoryScatter
+  VictoryScatter,
+  VictoryTooltip
 } from "victory";
 import * as R from "ramda";
 
 const formatTimeFromMs = timeInMs => {
-  let hours = parseInt(timeInMs / (60 * 60 * 1000), 10);
-  let minutes = parseInt(timeInMs / (60 * 1000), 10);
-  let seconds = parseInt(timeInMs / 1000, 10);
-  //return hours ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
-  return timeInMs;
+  const hours = parseInt(timeInMs / (60 * 60 * 1000), 10);
+  const minutes = parseInt(timeInMs / (60 * 1000), 10);
+  const seconds = ((timeInMs % 60000) / 1000).toFixed(0);
+  const ms = parseInt((timeInMs % 1000) / 100);
+
+  const prependZero = x => (x < 10 ? `0${x}` : x);
+
+  return hours
+    ? `${hours}:${minutes}:${prependZero(seconds)}:${ms}`
+    : `${minutes}:${prependZero(seconds)}:${ms}`;
 };
 
 const calculateDomain = times => {
@@ -62,9 +68,11 @@ export default ({ times }) => {
             }}
           />,
           <VictoryScatter
+            labelComponent={<VictoryTooltip />}
             data={athlete.trackTimes.map(trackTime => ({
               date: new Date(trackTime.date),
-              time: trackTime.time
+              time: trackTime.time,
+              label: `${athlete.name} [${athlete.country}] - ${trackTime.date}`
             }))}
             x="date"
             y="time"
